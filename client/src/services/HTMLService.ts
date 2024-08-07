@@ -11,10 +11,11 @@ export class HTMLService extends Service {
         try {
             const res = await axios.post(`${this.getBaseUrl}/api/gethtml`, { mdtext });
             const data = res.data;
-
-            if (data.html) {
+            
+            if (data.html !== undefined) {
                 return data.html;
             }
+            return data
         } catch (error) {
             logger.logError(error)
         }
